@@ -17,7 +17,7 @@ class ChangeEmpresaIdToUsersTable extends Migration
             $table->unsignedInteger('empresa_id')->after('id');
 
             $table->foreign('empresa_id')
-                ->on('empresas')
+                ->on('empresa')
                 ->references('id');
         });
     }

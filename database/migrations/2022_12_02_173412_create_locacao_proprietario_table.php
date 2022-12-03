@@ -21,15 +21,15 @@ class CreateLocacaoProprietarioTable extends Migration
             $table->timestamps();
 
             $table->foreign('empresa_id')
-                ->on('empresas')
+                ->on('empresa')
                 ->references('id');
 
             $table->foreign('locacao_id')
-                ->on('locacoes')
+                ->on('locacao')
                 ->references('id');
 
             $table->foreign('cliente_id')
-                ->on('clientes')
+                ->on('cliente')
                 ->references('id');
         });
     }

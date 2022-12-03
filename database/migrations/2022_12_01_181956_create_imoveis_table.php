@@ -13,7 +13,7 @@ class CreateImoveisTable extends Migration
      */
     public function up()
     {
-        Schema::create('imoveis', function (Blueprint $table) {
+        Schema::create('imovel', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('empresa_id');
             $table->unsignedInteger('tipo_imovel_id');
@@ -26,7 +26,7 @@ class CreateImoveisTable extends Migration
             $table->timestamps();
 
             $table->foreign('empresa_id')
-                ->on('empresas')
+                ->on('empresa')
                 ->references('id');
 
             $table->foreign('tipo_imovel_id')

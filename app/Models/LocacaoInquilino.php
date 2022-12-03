@@ -5,17 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Imovel extends Model
+class LocacaoInquilino extends Model
 {
     use HasFactory;
 
-    protected $table = 'imovel';
-
-    protected $fillable = [
-        'nome',
-        'descricao',
-        'status',
-    ];
+    protected $table = 'locacao_inquilino';
 
     /***************************************
      *          RELACIONAMENTOS            *
@@ -26,8 +20,13 @@ class Imovel extends Model
         return $this->belongsTo(Empresa::class);
     }
 
-    public function proprietario()
+    public function locacao()
     {
-        return $this->hasOne(Cliente::class, 'id', 'cliente_id');
+        return $this->belongsTo(Locacao::class);
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
     }
 }

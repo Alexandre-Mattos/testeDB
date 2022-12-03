@@ -13,7 +13,7 @@ class CreateLocacoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('locacoes', function (Blueprint $table) {
+        Schema::create('locacao', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('empresa_id');
             $table->unsignedInteger('imovel_id');
@@ -26,6 +26,14 @@ class CreateLocacoesTable extends Migration
             ]);
             $table->float('valor');
             $table->timestamps();
+
+            $table->foreign('empresa_id')
+                ->on('empresa')
+                ->references('id');
+
+            $table->foreign('imovel_id')
+                ->on('imovel')
+                ->references('id');
         });
     }
 
@@ -36,6 +44,6 @@ class CreateLocacoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locacoes');
+        Schema::dropIfExists('locacao');
     }
 }

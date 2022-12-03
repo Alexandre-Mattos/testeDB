@@ -15,7 +15,22 @@ class CreateLocacaoInquilinoTable extends Migration
     {
         Schema::create('locacao_inquilino', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('empresa_id');
+            $table->unsignedInteger('locacao_id');
+            $table->unsignedInteger('cliente_id');
             $table->timestamps();
+
+            $table->foreign('empresa_id')
+                ->on('empresas')
+                ->references('id');
+
+            $table->foreign('locacao_id')
+                ->on('locacoes')
+                ->references('id');
+
+            $table->foreign('cliente_id')
+                ->on('clientes')
+                ->references('id');
         });
     }
 

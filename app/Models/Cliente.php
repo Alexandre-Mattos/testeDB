@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Imovel extends Model
+class Cliente extends Model
 {
     use HasFactory;
 
-    protected $table = 'imovel';
+    protected $table = 'cliente';
 
     protected $fillable = [
         'nome',
-        'descricao',
-        'status',
+        'email',
+        'cpf',
     ];
 
     /***************************************
@@ -26,8 +26,13 @@ class Imovel extends Model
         return $this->belongsTo(Empresa::class);
     }
 
-    public function proprietario()
+    public function imovel()
     {
-        return $this->hasOne(Cliente::class, 'id', 'cliente_id');
+        return $this->hasMany(Imovel::class);
+    }
+
+    public function locacoes()
+    {
+        return $this->hasMany(Locacao::class);
     }
 }

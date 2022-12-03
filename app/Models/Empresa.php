@@ -9,7 +9,7 @@ class Empresa extends Model
 {
     use HasFactory;
 
-    protected $table = 'empresas';
+    protected $table = 'empresa';
 
     protected $fillable = [
         'nome',
@@ -27,4 +27,20 @@ class Empresa extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function locacoes()
+    {
+        return $this->hasMany(Locacao::class);
+    }
+
+    public function clientes()
+    {
+        return $this->hasMany(Cliente::class);
+    }
+
+    public function imoveis()
+    {
+        return $this->hasMany(Imovel::class);
+    }
+
 }
