@@ -20,35 +20,11 @@
 		<link rel="icon" type="image/x-icon" href="./assets/logomenor.png" />
 		<link rel="stylesheet" href="css/main.css" />
 
-		<link rel="stylesheet" href="../assets/icons/style.css" />
+		<link rel="stylesheet" href="assets/icons/style.css" />
 	</head>
 
 	<body>
 		<main>
-			<div class="menu-button" id="menu-button">
-				<div class="menu-button-burger"></div>
-			</div>
-			<section id="side-bar">
-				<a id="x-button" class="icon icon-cross"></a>
-				<div class="account-info">
-					<img src="./assets/user.svg" alt="Foto de Usuário" />
-					<div class="info">
-						<span class="name">Desconectado</span>
-						<a href="./index.html" class="btn">Fazer Login</a>
-					</div>
-				</div>
-				<div class="items">
-					<a class="item" href="./dashboard.html">Dashboard</a>
-					<a class="item" href="">Meus Imóveis</a>
-					<a class="item" href="">Minhas Locações</a>
-					<a class="item" href="./search.html">Buscar</a>
-					<a class="item" href="">Ver Todos os Imóveis</a>
-					<a class="item" href="./my-acc.html">Minha Conta</a>
-					<a class="item" href="./new-comp.html">Cadastrar Empresa</a>
-					<a class="item" href="">Cadastrar Cliente</a>
-					<a class="item" href="">Sobre</a>
-				</div>
-			</section>
 			<section class="main-section">
 				<div class="golden-rectangle"></div>
 				<h2>Login</h2>

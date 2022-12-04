@@ -18,8 +18,8 @@
 			rel="stylesheet"
 		/>
 		<link rel="icon" type="image/x-icon" href="./assets/logomenor.png" />
-		<link rel="stylesheet" href="../css/main.css" />
-		<link rel="stylesheet" href="../assets/icons/style.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="assets/icons/style.css" />
 	</head>
 
 	<body>
@@ -76,6 +76,6 @@
 				<div class="copyright">Imobil © 2022 - all rights reserved</div>
 			</footer>
 		</main>
-		<script src="./js/main.js"></script>
+		<script src="js/main.js"></script>
 	</body>
 </html>
