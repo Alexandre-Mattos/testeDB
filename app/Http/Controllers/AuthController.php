@@ -20,6 +20,6 @@ class AuthController extends Controller
             ]);
         }
 
-        return view();
+        return view('index');
     }
 }

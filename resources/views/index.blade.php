@@ -18,7 +18,7 @@
 			rel="stylesheet"
 		/>
 		<link rel="icon" type="image/x-icon" href="./assets/logomenor.png" />
-		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="css/main.css" />
 
 		<link rel="stylesheet" href="../assets/icons/style.css" />
 	</head>
@@ -52,7 +52,8 @@
 			<section class="main-section">
 				<div class="golden-rectangle"></div>
 				<h2>Login</h2>
-				<form action="" class="new-something">
+				<form  method="GET" action="{{ route('login') }}"class="new-something">
+                    @csrf
 					<div class="dado">
 						<label>Email:</label>
 						<input placeholder="Seu E-mail" type="email" />
@@ -79,6 +80,6 @@
 				<div class="copyright">Imobil © 2022 - all rights reserved</div>
 			</footer>
 		</main>
-		<script src="./js/main.js"></script>
+		<script src="js/main.js"></script>
 	</body>
 </html>
