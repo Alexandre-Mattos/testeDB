@@ -11,6 +11,12 @@ class Conta extends Model
 
     protected $table = 'conta';
 
+    protected $fillable = [
+        'empresa_id',
+        'valor',
+        'data_vencimento',
+    ];
+
     /***************************************
      *          RELACIONAMENTOS            *
      ***************************************/
@@ -23,6 +29,11 @@ class Conta extends Model
     public function locacao()
     {
         return $this->belongsTo(Locacao::class);
+    }
+
+    public function pagamento()
+    {
+        return $this->hasOne(Pagamento::class);
     }
 
 }

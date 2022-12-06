@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Request as FacadesRequest;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function index(FacadesRequest $request)
+    public function index(Request $request)
     {
         $user = User::query()
             ->where('email', $request->email)
-            ->where('password', $request->senha)
+            ->where('password', $request->password)
             ->first();
 
         if (!$user) {
@@ -20,6 +20,6 @@ class AuthController extends Controller
             ]);
         }
 
-        return view('index');
+        return view('search');
     }
 }

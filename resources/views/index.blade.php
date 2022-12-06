@@ -32,11 +32,11 @@
                     @csrf
 					<div class="dado">
 						<label>Email:</label>
-						<input placeholder="Seu E-mail" type="email" />
+						<input name="email" placeholder="Seu E-mail" type="email" />
 					</div>
 					<div class="dado">
 						<label>Senha:</label>
-						<input placeholder="Seu CPF" type="password" />
+						<input name="password" placeholder="Sua senha" type="password" />
 					</div>
 					<div class="btns">
 						<button
@@ -47,7 +47,7 @@
 						>
 							Entrar
 						</button>
-						<a class='btn' href="./new-acc.html">Criar Conta</a>
+						<a class='btn' href="/create-empresa">Criar Conta</a>
 					</div>
 				</form>
 			</section>

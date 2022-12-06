@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use Illuminate\Support\Facades\Request as FacadesRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function index(FacadesRequest $request)
+    public function index(Request $request)
     {
         $clientes = Cliente::query();
 
@@ -22,7 +23,7 @@ class ClienteController extends Controller
         return $clientes->get();
     }
 
-    public function store(FacadesRequest $request)
+    public function store(Request $request)
     {
         $dadosValidados = $request->validate([
             'nome'  => 'required|string',
@@ -30,7 +31,8 @@ class ClienteController extends Controller
             'cpf'   => 'required|string',
         ]);
 
-        $cliente = Cliente::create($dadosValidados);
+        $dadosValidados['empresa_id'] = User::where('remember_token', $request->_token)->first()->empresa_id;
+        $cliente                      = Cliente::create($dadosValidados);
 
         return $cliente;
     }
@@ -41,7 +43,7 @@ class ClienteController extends Controller
 
     }
 
-    public function update(FacadesRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $dadosValidados = $request->validate([
             'nome'  => 'required|string',

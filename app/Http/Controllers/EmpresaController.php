@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empresa;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
@@ -23,7 +23,15 @@ class EmpresaController extends Controller
 
         $empresa = Empresa::create($dadosValidados);
 
-        return $empresa;
+        $empresa->users()->create([
+            'name'           => 'Admin',
+            'email'          => $request->email,
+            'password'       => 123,
+            'empresa_id'     => $empresa->id,
+            'remember_token' => $request->_token,
+        ]);
+
+        return redirect()->to('/');
     }
     public function show($id)
     {

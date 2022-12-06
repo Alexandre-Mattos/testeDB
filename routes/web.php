@@ -20,3 +20,6 @@ Route::get('/', function () {
 });
 Route::get('/auth', [AuthController::class, 'index'])->name('login');
 Route::resource('/empresas', EmpresaController::class);
+Route::get('/create-empresa', function () {
+    return view('new-comp');
+});

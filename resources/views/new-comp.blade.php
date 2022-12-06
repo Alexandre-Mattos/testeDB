@@ -50,22 +50,31 @@
 			<section class="main-section" style="padding-top: 6rem">
 				<div class="golden-rectangle"></div>
 				<h2>Cadastrar Empresa</h2>
-				<form action="" class="new-something">
+				<form method="POST" action="{{ route('empresas.store') }}" class="new-something">
+                    @csrf
+
                     <div class="dado">
                         <label>Nome:</label>
-                        <input placeholder="Seu Nome" type="text" />
+                        <input name="nome" placeholder="Seu Nome" type="text" />
                     </div>
                     <div class="dado">
                         <label>Email:</label>
-                        <input placeholder="Seu E-mail" type="email" />
+                        <input name="email" placeholder="Seu E-mail" type="email" />
                     </div>
                     <div class="dado">
                         <label>CNPJ/CPF:</label>
-                        <input placeholder="Seu CPF" type="text" />
+                        <input name="cpf_cnpj" placeholder="Seu CPF" type="text" />
                     </div>
 					<div class="dado">
                         <label>Telefone:</label>
-                        <input placeholder="Seu Telefone" type="phone" />
+                        <input name="telefone" placeholder="Seu Telefone" type="phone" />
+                    </div>
+                    <div class="dado">
+                        <label>Tipo:</label>
+                        <select name="tipo" placeholder="Tipo da empresa">
+                            <option value="PF">Pessoa Física</option>
+                            <option value="LTDA">Limitada</option>
+                          </select>
                     </div>
 					<button
 						type="submit"
@@ -73,7 +82,7 @@
 						for="search"
 						class="btn"
 					>Cadastrar Empresa</button>
-					
+
 				</form>
 			</section>
 

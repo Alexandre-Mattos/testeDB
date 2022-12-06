@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoImovelTable extends Migration
+class CreateCidadeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateTipoImovelTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_imovel', function (Blueprint $table) {
+        Schema::create('cidade', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('empresa_id');
             $table->string('nome');
+            $table->string('uf');
             $table->timestamps();
-
-            $table->foreign('empresa_id')
-                ->on('empresa')
-                ->references('id');
         });
     }
 
@@ -32,6 +28,6 @@ class CreateTipoImovelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_imovel');
+        Schema::dropIfExists('cidade');
     }
 }

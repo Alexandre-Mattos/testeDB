@@ -17,6 +17,8 @@ class CreateImoveisTable extends Migration
             $table->id();
             $table->unsignedInteger('empresa_id');
             $table->unsignedInteger('tipo_imovel_id');
+            $table->unsignedInteger('cidade_id');
+
             $table->string('nome');
             $table->string('descricao');
             $table->enum('status', [
@@ -31,6 +33,10 @@ class CreateImoveisTable extends Migration
 
             $table->foreign('tipo_imovel_id')
                 ->on('tipo_imovel')
+                ->references('id');
+
+            $table->foreign('cidade_id')
+                ->on('cidade')
                 ->references('id');
         });
     }
