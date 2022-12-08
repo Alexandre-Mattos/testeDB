@@ -45,7 +45,7 @@ class Empresa extends Model
 
     public function tiposImoveis()
     {
-        return $this->hasMany(TipoImovel::class)
+        return $this->hasMany(TipoImovel::class);
     }
 
 }

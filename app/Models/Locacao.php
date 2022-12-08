@@ -40,7 +40,7 @@ class Locacao extends Model
 
     public function inquilinos()
     {
-        return $this->hasMany(LocacaoInquilinos::class);
+        return $this->hasMany(LocacaoInquilino::class);
     }
 
     public function contas()
