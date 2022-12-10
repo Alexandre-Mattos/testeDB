@@ -15,12 +15,14 @@
     color: #FFD700;
     font-weight: 800;
     font-size: 8rem;
+    font-family: "Josefin Sans", sans-serif;
   }
 
   h2 {
     color: #FFD700;
     font-weight: 800;
     font-size: 3.5rem;
+    font-family: "Josefin Sans", sans-serif;
   }
 
   h3 {
@@ -28,6 +30,7 @@
     font-weight: 600;
     font-size: 1.5rem;
     margin-bottom: -2.5rem;
+    font-family: "Josefin Sans", sans-serif;
   }
 
   .golden-rectangle {
@@ -279,7 +282,7 @@
   main footer {
     width: 100%;
     position: absolute;
-    bottom: 1rem;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-items: center;
@@ -291,4 +294,20 @@
     font-size: 1rem;
     margin-left: auto;
     margin-right: auto;
+  }
+  select {
+    margin-left: 1rem;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    background: rgba(255, 255, 255, 0.45);
+    border: none;
+    border-radius: 8px;
+    color: white;
+  }
+  option {
+    color: #292929;
+  }
+
+  .dado.tipo {
+    margin-top: 1rem;
   }

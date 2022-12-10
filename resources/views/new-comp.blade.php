@@ -69,7 +69,7 @@
                         <label>Telefone:</label>
                         <input name="telefone" placeholder="Seu Telefone" type="phone" />
                     </div>
-                    <div class="dado">
+                    <div class="dado tipo">
                         <label>Tipo:</label>
                         <select name="tipo" placeholder="Tipo da empresa">
                             <option value="PF">Pessoa Física</option>
