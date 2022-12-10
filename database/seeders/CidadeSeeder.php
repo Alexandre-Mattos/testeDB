@@ -15,7 +15,7 @@ class CidadeSeeder extends Seeder
     public function run()
     {
         Cidade::factory()
-            ->count(8)
+            ->count(10)
             ->create();
     }
 }

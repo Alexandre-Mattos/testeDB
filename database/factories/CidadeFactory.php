@@ -16,7 +16,7 @@ class CidadeFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => $this->faker->unique()->randomElement(['Araranguá', 'Sombrio', 'Criciúma', 'Tubarão', 'Florianópolis', 'Palhoça', 'São José', 'Balneário Camboriu']),
+            'nome' => $this->faker->unique()->randomElement(['Araranguá', 'Sombrio', 'Criciúma', 'Tubarão', 'Florianópolis', 'Palhoça', 'São José', 'Balneário Camboriu', 'Itapema', 'Laguna']),
             'uf'   => 'SC',
         ];
     }
