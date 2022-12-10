@@ -15,7 +15,6 @@ class CreateLocacoesTable extends Migration
     {
         Schema::create('locacao', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('empresa_id');
             $table->unsignedInteger('imovel_id');
             $table->date('inicio_periodo');
             $table->date('fim_periodo');
@@ -26,10 +25,6 @@ class CreateLocacoesTable extends Migration
             ]);
             $table->float('valor');
             $table->timestamps();
-
-            $table->foreign('empresa_id')
-                ->on('empresa')
-                ->references('id');
 
             $table->foreign('imovel_id')
                 ->on('imovel')

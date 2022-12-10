@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             TipoImovelSeeder::class,
             ImovelSeeder::class,
             LocacaoSeeder::class,
+            VendaSeeder::class,
         ]);
     }
 }

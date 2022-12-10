@@ -20,8 +20,7 @@ class LocacaoFactory extends Factory
         $data    = $this->faker->date();
         $duracao = rand(1, 12);
         return [
-            'imovel_id'      => $this->faker->numberBetween(1, 15),
-            'empresa_id'     => $this->faker->numberBetween(1, 5),
+            'imovel_id'      => $this->faker->numberBetween(1, 100),
             'inicio_periodo' => $data,
             'fim_periodo'    => Carbon::parse($data)->addMonth($duracao),
             'duracao'        => $duracao,
@@ -33,14 +32,9 @@ class LocacaoFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Locacao $locacao) {
-            $locacao->proprietarios()->create([
-                'cliente_id' => $this->faker->numberBetween(1, 15),
-                'empresa_id' => $locacao->empresa_id,
-                'locacao_id' => $locacao->id,
-            ]);
+
             $locacao->inquilinos()->create([
                 'cliente_id' => $this->faker->numberBetween(1, 15),
-                'empresa_id' => $locacao->empresa_id,
                 'locacao_id' => $locacao->id,
             ]);
 

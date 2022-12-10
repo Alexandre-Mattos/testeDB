@@ -17,7 +17,7 @@ class TipoImovelFactory extends Factory
     {
         return [
             'empresa_id' => $this->faker->numberBetween(1, 5),
-            'nome'       => $this->faker->randomElement(['Comercial', 'Residencial', 'Chácara', 'Depósito']),
+            'nome'       => $this->faker->unique()->randomElement(['Comercial', 'Residencial', 'Chácara', 'Depósito']),
         ];
     }
 }

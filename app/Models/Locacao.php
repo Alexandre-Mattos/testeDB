@@ -33,11 +33,6 @@ class Locacao extends Model
         return $this->belongsTo(Imovel::class);
     }
 
-    public function proprietarios()
-    {
-        return $this->hasMany(LocacaoProprietario::class);
-    }
-
     public function inquilinos()
     {
         return $this->hasMany(LocacaoInquilino::class);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocacaoProprietarioTable extends Migration
+class CreateVendaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class CreateLocacaoProprietarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('imovel_proprietario', function (Blueprint $table) {
+        Schema::create('venda', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('imovel_id');
+            $table->unsignedBigInteger('valor');
             $table->unsignedInteger('cliente_id');
+            $table->date('data_compra');
             $table->timestamps();
-
-            $table->foreign('imovel_id')
-                ->on('imovel')
-                ->references('id');
-
-            $table->foreign('cliente_id')
-                ->on('cliente')
-                ->references('id');
         });
     }
 
@@ -36,6 +30,6 @@ class CreateLocacaoProprietarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locacao_proprietario');
+        Schema::dropIfExists('venda');
     }
 }

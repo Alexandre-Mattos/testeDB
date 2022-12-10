@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cidade;
+use App\Models\Venda;
 use Illuminate\Database\Seeder;
 
-class CidadeSeeder extends Seeder
+class VendaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,11 @@ class CidadeSeeder extends Seeder
      */
     public function run()
     {
-        Cidade::factory()
-            ->count(8)
+        Venda::factory()
+            ->hasImovel(1, [
+                'status' => 'Vendido',
+            ])
+            ->count(50)
             ->create();
     }
 }

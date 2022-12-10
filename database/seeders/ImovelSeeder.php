@@ -15,7 +15,7 @@ class ImovelSeeder extends Seeder
     public function run()
     {
         Imovel::factory()
-            ->count(10)
+            ->count(100)
             ->create();
     }
 }

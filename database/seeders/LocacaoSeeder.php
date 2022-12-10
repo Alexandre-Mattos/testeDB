@@ -16,12 +16,11 @@ class LocacaoSeeder extends Seeder
     {
 
         Locacao::factory()
-            ->forEmpresa()
             ->hasImovel(1, [
                 'status' => 'Locado',
             ])
             ->hasContas(rand(1, 12))
-            ->count(10)
+            ->count(50)
             ->create();
     }
 }

@@ -9,7 +9,7 @@ class LocacaoProprietario extends Model
 {
     use HasFactory;
 
-    protected $table = 'locacao_proprietario';
+    protected $table = 'imovel_proprietario';
 
     /***************************************
      *          RELACIONAMENTOS            *
@@ -20,7 +20,7 @@ class LocacaoProprietario extends Model
         return $this->belongsTo(Empresa::class);
     }
 
-    public function locacao()
+    public function imovel()
     {
         return $this->belongsTo(Locacao::class);
     }

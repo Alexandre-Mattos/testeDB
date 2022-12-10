@@ -28,11 +28,17 @@ class Imovel extends Model
 
     public function proprietario()
     {
-        return $this->hasOne(Cliente::class, 'id', 'cliente_id');
+        return $this->hasOne(LocacaoProprietario::class);
     }
 
     public function tipoImovel()
     {
         return $this->hasOne(TipoImovel::class);
     }
+
+    public function venda()
+    {
+        return $this->hasOne(Venda::class);
+    }
+
 }
