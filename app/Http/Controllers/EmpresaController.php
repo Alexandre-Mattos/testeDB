@@ -22,7 +22,7 @@ class EmpresaController extends Controller
         ]);
 
         $empresa = Empresa::create($dadosValidados);
-
+        \Log::channel('single')->debug($request);
         $empresa->users()->create([
             'name'           => 'Admin',
             'email'          => $request->email,
@@ -31,7 +31,7 @@ class EmpresaController extends Controller
             'remember_token' => $request->_token,
         ]);
 
-        return redirect()->to('/');
+        return $empresa;
     }
     public function show($id)
     {

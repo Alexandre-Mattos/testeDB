@@ -13,11 +13,11 @@ class LocacaoController extends Controller
     {
         $query = Locacao::query();
 
-        if ($request->has('id') && $request->id != (null || '')) {
-            $query->findOrFail($request->id);
-        }
-
-        return view('');
+        $query->join('imovel as I', 'locacao.imovel_id', '=', 'I.id');
+        $query->join('empresa as E', 'I.empresa_id', '=', 'E.id');
+        $query->join('locacao_inquilino as LI', 'locacao.id', '=', 'LI.locacao_id');
+        $query->join('cliente as C', 'LI.cliente_id', '=', 'C.id');
+        return $query->select('E.nome as nome_empresa', 'I.nome as nome_imovel', 'C.nome as nome_inquilino', 'duracao', 'inicio_periodo', 'fim_periodo')->get();
     }
 
     public function store(Request $request)

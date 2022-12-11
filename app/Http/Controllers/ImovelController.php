@@ -12,20 +12,15 @@ class ImovelController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Imovel::query();
+        $query = Imovel::where('imovel.empresa_id', $request->empresa_id);
 
-        if ($request->has('nome') && $request->nome != (null || '')) {
-            $query->where('nome', 'like', '%' . $request->nome . '%');
+        if ($request->cidade) {
+            $query->join('cidade as C', 'imovel.cidade_id', '=', 'C.id');
+            $query->where('C.nome', 'like', '%' . $request->cidade . '%');
         }
 
-        if ($request->has('cidade') && $request->cidade != (null || '')) {
-            $query->whereHas('cidades', function ($sq) use ($request) {
-                $sq->where('nome', 'like', '%' . $request->cidade . '%');
-            });
-        }
-
-        $imoveis = $query->get();
-        return view('search', compact('imoveis'));
+        $query->join('tipo_imovel as T', 'imovel.tipo_imovel_id', '=', 'T.id');
+        return $query->select('imovel.nome as imovel_nome', 'status', 'descricao', 'C.nome as nome_cidade', 'uf', 'T.nome as tipo_nome')->get();
     }
 
     public function store(Request $request)
@@ -44,12 +39,12 @@ class ImovelController extends Controller
         $imovel->cidade_id = Cidade::where('nome', 'like', '%' . $dadosValidados['cidade'] . '%')->first()->id;
         $imovel->save();
 
-        return view('search');
+        return $imovel;
     }
 
     public function show($id)
     {
-        return view('', ['imovel' => Imovel::findOrFail($id)]);
+        return Imovel::findOrFail($id);
     }
 
     public function update(Request $request, $id)
@@ -72,7 +67,7 @@ class ImovelController extends Controller
             $imovel->cidade_id = Cidade::where('nome', 'like', '%' . $dadosValidados['cidade'] . '%')->first()->id;
 
         }
-        return view('search');
+        return $imovel;
     }
 
     public function destroy($id)

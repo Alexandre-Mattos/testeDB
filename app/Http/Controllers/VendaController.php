@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Venda;
 use Illuminate\Http\Request;
 
@@ -10,24 +9,15 @@ class VendaController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Venda::query()
-            ->whereHas('imovel', function ($sq) use ($request) {
-                $sq->where('empresa_id', User::where('remeber_token', $request->_token)->first()->empresa_id);
-            });
+        $query = Venda::query();
 
-        if ($request->valor) {
-            $query->where('valor', '>=', $request->valor);
-        }
+        $query->join('imovel as I', 'venda.imovel_id', '=', 'I.id');
+        $query->join('cliente as C', 'venda.cliente_id', '=', 'C.id');
+        $query->join('cidade as CID', 'I.cidade_id', '=', 'CID.id');
 
-        if ($request->data_compra) {
-            $query->where('data_compra', $request->data_compra);
-        }
+        $query->where('venda.valor', '>=', $request->valor);
 
-        $query = $query->get();
-
-        return response()->json([
-            'data' => $query,
-        ]);
+        return $query->select('I.nome as nome_imovel', 'CID.nome as cidade', 'C.nome as cliente', 'valor', 'data_compra')->get();
     }
 
     public function store(Request $request)

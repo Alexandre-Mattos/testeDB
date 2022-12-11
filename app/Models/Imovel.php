@@ -41,4 +41,9 @@ class Imovel extends Model
         return $this->hasOne(Venda::class);
     }
 
+    public function cidades()
+    {
+        return $this->hasOne(Cidade::class);
+    }
+
 }

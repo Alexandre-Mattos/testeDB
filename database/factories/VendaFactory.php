@@ -22,7 +22,7 @@ class VendaFactory extends Factory
         return [
             'imovel_id'   => $this->faker->randomNumber(1, 100),
             'cliente_id'  => $this->faker->randomNumber(1, 200),
-            'valor'       => mt_rand(1, 9999),
+            'valor'       => mt_rand(100000, 20000000),
             'data_compra' => Carbon::parse($data)->subMonth($duracao),
         ];
     }
