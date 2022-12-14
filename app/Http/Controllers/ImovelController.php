@@ -12,15 +12,23 @@ class ImovelController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Imovel::where('imovel.empresa_id', $request->empresa_id);
+        $query = Imovel::query();
+        $query->join('tipo_imovel as T', 'imovel.tipo_imovel_id', '=', 'T.id');
 
-        if ($request->cidade) {
+        if ($request->input('cidade')) {
             $query->join('cidade as C', 'imovel.cidade_id', '=', 'C.id');
             $query->where('C.nome', 'like', '%' . $request->cidade . '%');
         }
 
-        $query->join('tipo_imovel as T', 'imovel.tipo_imovel_id', '=', 'T.id');
-        return $query->select('imovel.nome as imovel_nome', 'status', 'descricao', 'C.nome as nome_cidade', 'uf', 'T.nome as tipo_nome')->get();
+        if ($request->input('query') == 2) {
+            $query->select('imovel.nome as imovel_nome', 'status', 'descricao', 'C.nome as nome_cidade', 'uf', 'T.nome as tipo_nome');
+        }
+
+        if ($request->input('query') == 1) {
+            $query->select(\DB::raw('COUNT(imovel.id) as quantidade_imoveis'), 'T.nome as Nome')->groupBy('T.nome');
+        }
+
+        return $query->get();
     }
 
     public function store(Request $request)

@@ -17,7 +17,15 @@ class LocacaoController extends Controller
         $query->join('empresa as E', 'I.empresa_id', '=', 'E.id');
         $query->join('locacao_inquilino as LI', 'locacao.id', '=', 'LI.locacao_id');
         $query->join('cliente as C', 'LI.cliente_id', '=', 'C.id');
-        return $query->select('E.nome as nome_empresa', 'I.nome as nome_imovel', 'C.nome as nome_inquilino', 'duracao', 'inicio_periodo', 'fim_periodo')->get();
+
+        if ($request->input('query') == 1) {
+            $query->select(\DB::raw('AVG(locacao.duracao) as media_duracao'), \DB::raw('extract(year from locacao.inicio_periodo) as ano'))->groupBy('ano');
+        }
+
+        if ($request->input('query') == 2) {
+            $query->select('E.nome as nome_empresa', 'I.nome as nome_imovel', 'C.nome as nome_inquilino', 'duracao', 'inicio_periodo', 'fim_periodo');
+        }
+        return $query->get();
     }
 
     public function store(Request $request)

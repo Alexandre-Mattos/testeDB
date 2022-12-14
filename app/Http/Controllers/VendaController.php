@@ -17,7 +17,16 @@ class VendaController extends Controller
 
         $query->where('venda.valor', '>=', $request->valor);
 
-        return $query->select('I.nome as nome_imovel', 'CID.nome as cidade', 'C.nome as cliente', 'valor', 'data_compra')->get();
+        if ($request->input('query') == 2) {
+            $query->select('I.nome as nome_imovel', 'CID.nome as cidade', 'C.nome as cliente', 'valor', 'data_compra');
+
+        }
+
+        if ($request->input('query') == 1) {
+            $query->select(\DB::raw('SUM(venda.valor) as valor'), 'CID.nome')->groupBy('CID.nome');
+        }
+
+        return $query->get();
     }
 
     public function store(Request $request)
