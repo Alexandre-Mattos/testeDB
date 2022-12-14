@@ -32,7 +32,7 @@
 					<img src="./assets/user.svg" alt="Foto de Usuário" />
 					<div class="info">
 						<span class="name">Desconectado</span>
-						<a href="./index.html" class="btn">Fazer Login</a>
+						<a href="/" class="btn">Fazer Login</a>
 					</div>
 				</div>
 				<div class="items">
